@@ -10,7 +10,8 @@
 }
 
 \usage{
-''DashKbar(id=NULL, actions=NULL, selected=NULL)
+''DashKbar(id=NULL, actions=NULL, resultsClassName=NULL,
+searchClassName=NULL, selected=NULL)
 }
 
 \arguments{
@@ -26,6 +27,10 @@ those elements have the following types:
   - icon (character; optional)
   - subtitle (character; optional)
   - parentid (character; optional)s. Actions to be registered with KBar}
+
+\item{resultsClassName}{Character. className to be applied to the results}
+
+\item{searchClassName}{Character. className to be applied to the search bar}
 
 \item{selected}{Character. The currently selected action}
 }

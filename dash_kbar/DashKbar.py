@@ -33,6 +33,12 @@ Keyword arguments:
 
     - subtitle (string; optional)
 
+- resultsClassName (string; optional):
+    className to be applied to the results.
+
+- searchClassName (string; optional):
+    className to be applied to the search bar.
+
 - selected (string; optional):
     The currently selected action."""
     _children_props = []
@@ -40,10 +46,10 @@ Keyword arguments:
     _namespace = 'dash_kbar'
     _type = 'DashKbar'
     @_explicitize_args
-    def __init__(self, id=Component.UNDEFINED, actions=Component.UNDEFINED, selected=Component.UNDEFINED, **kwargs):
-        self._prop_names = ['id', 'actions', 'selected']
+    def __init__(self, id=Component.UNDEFINED, actions=Component.UNDEFINED, searchClassName=Component.UNDEFINED, resultsClassName=Component.UNDEFINED, selected=Component.UNDEFINED, **kwargs):
+        self._prop_names = ['id', 'actions', 'resultsClassName', 'searchClassName', 'selected']
         self._valid_wildcard_attributes =            []
-        self.available_properties = ['id', 'actions', 'selected']
+        self.available_properties = ['id', 'actions', 'resultsClassName', 'searchClassName', 'selected']
         self.available_wildcard_properties =            []
         _explicit_args = kwargs.pop('_explicit_args')
         _locals = locals()
