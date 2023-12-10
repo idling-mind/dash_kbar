@@ -1,0 +1,74 @@
+{
+  "src/lib/components/DashKbar.react.js": {
+    "description": "",
+    "displayName": "DashKbar",
+    "methods": [],
+    "props": {
+      "id": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The ID used to identify this component in Dash callbacks."
+      },
+      "setProps": {
+        "type": {
+          "name": "func"
+        },
+        "required": false,
+        "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
+      },
+      "actions": {
+        "type": {
+          "name": "arrayOf",
+          "value": {
+            "name": "shape",
+            "value": {
+              "id": {
+                "name": "string",
+                "required": true
+              },
+              "name": {
+                "name": "string",
+                "required": true
+              },
+              "shortcut": {
+                "name": "string",
+                "required": false
+              },
+              "keywords": {
+                "name": "string",
+                "required": false
+              },
+              "section": {
+                "name": "string",
+                "required": false
+              },
+              "icon": {
+                "name": "string",
+                "required": false
+              },
+              "subtitle": {
+                "name": "string",
+                "required": false
+              },
+              "parentId": {
+                "name": "string",
+                "required": false
+              }
+            }
+          }
+        },
+        "required": false,
+        "description": "Actions to be registered with KBar"
+      },
+      "selected": {
+        "type": {
+          "name": "string"
+        },
+        "required": false,
+        "description": "The currently selected action"
+      }
+    }
+  }
+}

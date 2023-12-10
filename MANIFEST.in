@@ -1,0 +1,11 @@
+include dash_kbar/dash_kbar.min.js
+include dash_kbar/dash_kbar.min.js.map
+include dash_kbar/async-*.js
+include dash_kbar/async-*.js.map
+include dash_kbar/*-shared.js
+include dash_kbar/*-shared.js.map
+include dash_kbar/metadata.json
+include dash_kbar/package-info.json
+include README.md
+include LICENSE
+include package.json
