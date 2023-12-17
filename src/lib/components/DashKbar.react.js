@@ -58,6 +58,7 @@ const DashKbar = (props) => {
 
 function ActionRegistration(props) {
     const action_objects = props.actions.map((action) => {
+        if (action.noAction) return createAction(action);
         action.perform = () => {
             console.log('Selected:', action.id);
             props.setProps({selected: action.id});
@@ -232,9 +233,9 @@ DashKbar.propTypes = {
             icon: PropTypes.string,
             subtitle: PropTypes.string,
             parentId: PropTypes.string,
+            noAction: PropTypes.bool,
         })
     ),
-
 
     /**
      * The currently selected action

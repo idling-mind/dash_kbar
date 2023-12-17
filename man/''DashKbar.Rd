@@ -16,7 +16,7 @@
 \arguments{
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
 
-\item{actions}{List of lists containing elements 'id', 'name', 'shortcut', 'keywords', 'section', 'icon', 'subtitle', 'parentid'.
+\item{actions}{List of lists containing elements 'id', 'name', 'shortcut', 'keywords', 'section', 'icon', 'subtitle', 'parentid', 'noaction'.
 those elements have the following types:
   - id (character; required)
   - name (character; required)
@@ -25,7 +25,8 @@ those elements have the following types:
   - section (character; optional)
   - icon (character; optional)
   - subtitle (character; optional)
-  - parentid (character; optional)s. Actions to be registered with KBar}
+  - parentid (character; optional)
+  - noaction (logical; optional)s. Actions to be registered with KBar}
 
 \item{selected}{Character. The currently selected action}
 }

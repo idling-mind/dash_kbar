@@ -12,7 +12,7 @@ app.layout = dmc.MantineProvider(
                 dash_kbar.DashKbar(
                     id="input",
                     actions=[
-                        {"name": "Action 1", "id": "action1", "icon": "⭐️"},
+                        {"name": "Action 1", "id": "action1", "icon": "⭐️", "noAction": True},
                         {"name": "Child 1", "id": "action5", "parent": "action1"},
                         {"name": "Action 2", "id": "action2", "section": "Section 1"},
                         {"name": "Action 3", "id": "action3", "section": "Section 1"},

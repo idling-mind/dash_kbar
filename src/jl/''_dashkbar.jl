@@ -9,7 +9,7 @@ A DashKbar component.
 
 Keyword arguments:
 - `id` (String; optional): The ID used to identify this component in Dash callbacks.
-- `actions` (optional): Actions to be registered with KBar. actions has the following type: Array of lists containing elements 'id', 'name', 'shortcut', 'keywords', 'section', 'icon', 'subtitle', 'parentId'.
+- `actions` (optional): Actions to be registered with KBar. actions has the following type: Array of lists containing elements 'id', 'name', 'shortcut', 'keywords', 'section', 'icon', 'subtitle', 'parentId', 'noAction'.
 Those elements have the following types:
   - `id` (String; required)
   - `name` (String; required)
@@ -18,7 +18,8 @@ Those elements have the following types:
   - `section` (String; optional)
   - `icon` (String; optional)
   - `subtitle` (String; optional)
-  - `parentId` (String; optional)s
+  - `parentId` (String; optional)
+  - `noAction` (Bool; optional)s
 - `selected` (String; optional): The currently selected action
 """
 function ''_dashkbar(; kwargs...)
