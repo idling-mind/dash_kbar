@@ -62,20 +62,6 @@
         "required": false,
         "description": "Actions to be registered with KBar"
       },
-      "searchClassName": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "className to be applied to the search bar"
-      },
-      "resultsClassName": {
-        "type": {
-          "name": "string"
-        },
-        "required": false,
-        "description": "className to be applied to the results"
-      },
       "selected": {
         "type": {
           "name": "string"

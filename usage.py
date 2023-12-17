@@ -13,8 +13,10 @@ app.layout = dmc.MantineProvider(
                     id="input",
                     actions=[
                         {"name": "Action 1", "id": "action1", "icon": "⭐️"},
-                        {"name": "Action 2", "id": "action2"},
-                        {"name": "Action 3", "id": "action3"},
+                        {"name": "Child 1", "id": "action5", "parent": "action1"},
+                        {"name": "Action 2", "id": "action2", "section": "Section 1"},
+                        {"name": "Action 3", "id": "action3", "section": "Section 1"},
+                        {"name": "Action 4", "id": "action4", "subtitle": "this is a subtitle", "section": "Section 2"},
                     ],
                 ),
                 dmc.Chip(id="output"),

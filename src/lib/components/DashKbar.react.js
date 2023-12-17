@@ -15,24 +15,35 @@ import PropTypes from 'prop-types';
 const DashKbar = (props) => {
     const {id, setProps, actions} = props;
     return (
-        <KBarProvider id={id}>
+        <KBarProvider id={id} options={{disableScrollbarManagement: true}}>
             <div>
                 <KBarPortal>
                     <KBarPositioner>
                         <KBarAnimator
-                            className={props.animatorClassName}
-                            style={props.animatorStyle}
+                            style={{
+                                maxWidth: '600px',
+                                width: '100%',
+                                borderRadius: '8px',
+                                overflow: 'hidden',
+                                boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)',
+                                background: 'white',
+                                color: 'grey',
+                                fontFamily: 'inherit',
+                            }}
                         >
                             <KBarSearch
-                                className={props.searchClassName}
-                                style={props.searchStyle}
+                                style={{
+                                    padding: '12px 16px',
+                                    fontSize: '16px',
+                                    width: '100%',
+                                    boxSizing: 'border-box',
+                                    outline: 'none',
+                                    border: 'none',
+                                    background: 'transparent',
+                                    color: 'grey',
+                                }}
                             />
-                            <RenderResults
-                                className={props.resultsClassName}
-                                style={props.resultsStyle}
-                                itemClassName={props.resultItemClassName}
-                                itemStyle={props.resultItemStyle}
-                            />
+                            <RenderResults props={props} />
                             <ActionRegistration
                                 actions={actions}
                                 setProps={setProps}
@@ -66,8 +77,12 @@ function RenderResults(props) {
             onRender={({item, active}) =>
                 typeof item === 'string' ? (
                     <div
-                        style={props.resultItemStyle}
-                        className={props.resultItemClassName}
+                        style={{
+                            padding: '8px 16px',
+                            fontSize: '10px',
+                            textTransform: 'uppercase',
+                            opacity: 0.5,
+                        }}
                     >
                         {item}
                     </div>
@@ -76,8 +91,7 @@ function RenderResults(props) {
                         action={item}
                         active={active}
                         currentRootActionId={rootActionId}
-                        style={props.resultItemStyle}
-                        className={props.resultItemClassName}
+                        props={props}
                     />
                 )
             }
@@ -87,12 +101,11 @@ function RenderResults(props) {
 
 const ResultItem = React.forwardRef(
     (
-        {action, active, currentRootActionId, style, className} = {
+        {action, active, currentRootActionId, props} = {
             action,
             active,
             currentRootActionId,
-            style,
-            className,
+            props,
         },
         ref
     ) => {
@@ -109,7 +122,20 @@ const ResultItem = React.forwardRef(
         }, [action.ancestors, currentRootActionId]);
 
         return (
-            <div ref={ref} style={style}>
+            <div
+                ref={ref}
+                style={{
+                    padding: '12px 16px',
+                    background: active ? 'lightgrey' : 'transparent',
+                    borderLeft: `5px solid ${
+                        active ? 'steelblue' : 'transparent'
+                    }`,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    cursor: 'pointer',
+                }}
+            >
                 <div
                     style={{
                         display: 'flex',
@@ -209,15 +235,6 @@ DashKbar.propTypes = {
         })
     ),
 
-    /**
-     * className to be applied to the search bar
-     */
-    searchClassName: PropTypes.string,
-
-    /**
-     * className to be applied to the results
-     */
-    resultsClassName: PropTypes.string,
 
     /**
      * The currently selected action
