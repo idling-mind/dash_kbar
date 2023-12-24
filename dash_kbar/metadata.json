@@ -18,6 +18,38 @@
         "required": false,
         "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
       },
+      "debug": {
+        "type": {
+          "name": "bool"
+        },
+        "required": false,
+        "description": "Whether to print debug messages",
+        "defaultValue": {
+          "value": "false",
+          "computed": false
+        }
+      },
+      "style": {
+        "type": {
+          "name": "shape",
+          "value": {
+            "maxWidth": {
+              "name": "string",
+              "required": false
+            },
+            "background": {
+              "name": "string",
+              "required": false
+            },
+            "fontFamily": {
+              "name": "string",
+              "required": false
+            }
+          }
+        },
+        "required": false,
+        "description": "style object"
+      },
       "actions": {
         "type": {
           "name": "arrayOf",

@@ -10,7 +10,7 @@
 }
 
 \usage{
-''DashKbar(id=NULL, actions=NULL, selected=NULL)
+''DashKbar(id=NULL, actions=NULL, debug=NULL, selected=NULL, style=NULL)
 }
 
 \arguments{
@@ -28,7 +28,15 @@ those elements have the following types:
   - parentid (character; optional)
   - noaction (logical; optional)s. Actions to be registered with KBar}
 
+\item{debug}{Logical. Whether to print debug messages}
+
 \item{selected}{Character. The currently selected action}
+
+\item{style}{Lists containing elements 'maxwidth', 'background', 'fontfamily'.
+those elements have the following types:
+  - maxwidth (character; optional)
+  - background (character; optional)
+  - fontfamily (character; optional). style object}
 }
 
 \value{named list of JSON elements corresponding to React.js properties and their values}

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
     KBarProvider,
     KBarSearch,
@@ -13,7 +13,28 @@ import {
 import PropTypes from 'prop-types';
 
 const DashKbar = (props) => {
-    const {id, setProps, actions} = props;
+    const {id, setProps, actions, style} = props;
+    const [mergedStyle, setMergedStyle] = useState({});
+
+    const defaultStyle = {
+        maxWidth: '600px',
+        width: '100%',
+        background: 'white',
+        searchBackground: 'transparent',
+        searchTextColor: 'grey',
+        fontFamily: 'sans-serif',
+        itemTextColor: 'grey',
+        itemSubtitleTextColor: 'grey',
+        sectionTitleTextColor: 'grey',
+        selectedBackground: 'rgba(34, 139, 230, 0.1)',
+        selectedTextColor: 'grey',
+        selectedLeftBorderColor: 'rgba(34, 139, 230, 1)',
+    };
+
+    useEffect(() => {
+        setMergedStyle({...defaultStyle, ...style});
+    }, [style]);
+
     return (
         <KBarProvider id={id} options={{disableScrollbarManagement: true}}>
             <div>
@@ -21,14 +42,14 @@ const DashKbar = (props) => {
                     <KBarPositioner>
                         <KBarAnimator
                             style={{
-                                maxWidth: '600px',
-                                width: '100%',
+                                maxWidth: mergedStyle.maxWidth,
+                                width: mergedStyle.width,
                                 borderRadius: '8px',
                                 overflow: 'hidden',
                                 boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)',
-                                background: 'white',
+                                background: mergedStyle.background,
                                 color: 'grey',
-                                fontFamily: 'inherit',
+                                fontFamily: mergedStyle.fontFamily,
                             }}
                         >
                             <KBarSearch
@@ -39,11 +60,14 @@ const DashKbar = (props) => {
                                     boxSizing: 'border-box',
                                     outline: 'none',
                                     border: 'none',
-                                    background: 'transparent',
-                                    color: 'grey',
+                                    background: mergedStyle.searchBackground,
+                                    color: mergedStyle.searchTextColor,
                                 }}
                             />
-                            <RenderResults props={props} />
+                            <RenderResults
+                                {...props}
+                                mergedStyle={mergedStyle}
+                            />
                             <ActionRegistration
                                 actions={actions}
                                 setProps={setProps}
@@ -60,7 +84,9 @@ function ActionRegistration(props) {
     const action_objects = props.actions.map((action) => {
         if (action.noAction) return createAction(action);
         action.perform = () => {
-            console.log('Selected:', action.id);
+            if (props.debug) {
+                console.log('Performing action', action);
+            }
             props.setProps({selected: action.id});
         };
         return createAction(action);
@@ -82,7 +108,7 @@ function RenderResults(props) {
                             padding: '8px 16px',
                             fontSize: '10px',
                             textTransform: 'uppercase',
-                            opacity: 0.5,
+                            color: props.mergedStyle.sectionTitleTextColor,
                         }}
                     >
                         {item}
@@ -127,10 +153,17 @@ const ResultItem = React.forwardRef(
                 ref={ref}
                 style={{
                     padding: '12px 16px',
-                    background: active ? 'lightgrey' : 'transparent',
+                    background: active
+                        ? props.mergedStyle.selectedBackground
+                        : 'transparent',
                     borderLeft: `5px solid ${
-                        active ? 'steelblue' : 'transparent'
+                        active
+                            ? props.mergedStyle.selectedLeftBorderColor
+                            : 'transparent'
                     }`,
+                    color: active
+                        ? props.mergedStyle.selectedTextColor
+                        : props.mergedStyle.itemTextColor,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'space-between',
@@ -171,7 +204,13 @@ const ResultItem = React.forwardRef(
                             <span>{action.name}</span>
                         </div>
                         {action.subtitle && (
-                            <span style={{fontSize: 12}}>
+                            <span
+                                style={{
+                                    fontSize: 12,
+                                    color: props.mergedStyle
+                                        .itemSubtitleTextColor,
+                                }}
+                            >
                                 {action.subtitle}
                             </span>
                         )}
@@ -206,7 +245,9 @@ const ResultItem = React.forwardRef(
     }
 );
 
-DashKbar.defaultProps = {};
+DashKbar.defaultProps = {
+    debug: false,
+};
 
 DashKbar.propTypes = {
     /**
@@ -219,6 +260,20 @@ DashKbar.propTypes = {
      * to Dash, to make them available for callbacks.
      */
     setProps: PropTypes.func,
+
+    /**
+     * Whether to print debug messages
+     * */
+    debug: PropTypes.bool,
+
+    /**
+     * style object
+     * */
+    style: PropTypes.shape({
+        maxWidth: PropTypes.string,
+        background: PropTypes.string,
+        fontFamily: PropTypes.string,
+    }),
 
     /**
      * Actions to be registered with KBar
