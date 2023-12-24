@@ -1,5 +1,5 @@
 import dash_kbar
-from dash import Dash, callback, html, Input, Output, dcc, no_update, State
+from dash import Dash, callback, html, Input, Output, no_update, State
 
 app = Dash(__name__)
 
@@ -9,7 +9,12 @@ app.layout = html.Div(
         dash_kbar.DashKbar(
             id="input",
             actions=[
-                {"name": "DashKbar Theme", "id": "theme_parent", "icon": "⭐️", "noAction": True},
+                {
+                    "name": "DashKbar Theme",
+                    "id": "theme_parent",
+                    "icon": "⭐️",
+                    "noAction": True,
+                },
                 {"name": "Dark", "id": "theme_dark", "parent": "theme_parent"},
                 {"name": "Light", "id": "theme_light", "parent": "theme_parent"},
                 {"name": "Action 2", "id": "action2", "section": "Section 1"},
@@ -22,8 +27,10 @@ app.layout = html.Div(
                 },
             ],
             style={
-                "background": "#efefef",
-                "itemSubtitleTextColor": "darkgray",
+                "itemSubtitleTextColor": "steelblue",
+                # This will be replaced if style is updated by callback
+                # So use State("input", "style") as an input to the callback
+                # and update the dict
             },
         ),
         html.Div(id="output"),
@@ -42,7 +49,9 @@ def update_actions(n_clicks, actions):
     ]
 
 
-@callback(Output("output", "children"), Output("input", "style"), Input("input", "selected"))
+@callback(
+    Output("output", "children"), Output("input", "style"), Input("input", "selected")
+)
 def update_output(selected):
     if selected is None:
         return "No action selected", no_update
