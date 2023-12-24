@@ -10,17 +10,20 @@
 }
 
 \usage{
-''DashKbar(id=NULL, actions=NULL, debug=NULL, selected=NULL, style=NULL)
+''DashKbar(children=NULL, id=NULL, actions=NULL, debug=NULL,
+selected=NULL, style=NULL)
 }
 
 \arguments{
+\item{children}{A list of or a singular dash component, string or number. Children to be rendered}
+
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
 
 \item{actions}{List of lists containing elements 'id', 'name', 'shortcut', 'keywords', 'section', 'icon', 'subtitle', 'parentid', 'noaction'.
 those elements have the following types:
   - id (character; required)
   - name (character; required)
-  - shortcut (character; optional)
+  - shortcut (character | list of characters; optional)
   - keywords (character; optional)
   - section (character; optional)
   - icon (character; optional)

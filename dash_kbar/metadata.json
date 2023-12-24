@@ -18,6 +18,13 @@
         "required": false,
         "description": "Dash-assigned callback that should be called to report property changes\r\nto Dash, to make them available for callbacks."
       },
+      "children": {
+        "type": {
+          "name": "node"
+        },
+        "required": false,
+        "description": "Children to be rendered"
+      },
       "debug": {
         "type": {
           "name": "bool"
@@ -65,7 +72,18 @@
                 "required": true
               },
               "shortcut": {
-                "name": "string",
+                "name": "union",
+                "value": [
+                  {
+                    "name": "string"
+                  },
+                  {
+                    "name": "arrayOf",
+                    "value": {
+                      "name": "string"
+                    }
+                  }
+                ],
                 "required": false
               },
               "keywords": {

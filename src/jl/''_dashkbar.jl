@@ -4,16 +4,20 @@ export ''_dashkbar
 
 """
     ''_dashkbar(;kwargs...)
+    ''_dashkbar(children::Any;kwargs...)
+    ''_dashkbar(children_maker::Function;kwargs...)
+
 
 A DashKbar component.
 
 Keyword arguments:
+- `children` (a list of or a singular dash component, string or number; optional): Children to be rendered
 - `id` (String; optional): The ID used to identify this component in Dash callbacks.
 - `actions` (optional): Actions to be registered with KBar. actions has the following type: Array of lists containing elements 'id', 'name', 'shortcut', 'keywords', 'section', 'icon', 'subtitle', 'parentId', 'noAction'.
 Those elements have the following types:
   - `id` (String; required)
   - `name` (String; required)
-  - `shortcut` (String; optional)
+  - `shortcut` (String | Array of Strings; optional)
   - `keywords` (String; optional)
   - `section` (String; optional)
   - `icon` (String; optional)
@@ -29,8 +33,11 @@ Those elements have the following types:
   - `fontFamily` (String; optional)
 """
 function ''_dashkbar(; kwargs...)
-        available_props = Symbol[:id, :actions, :debug, :selected, :style]
+        available_props = Symbol[:children, :id, :actions, :debug, :selected, :style]
         wild_props = Symbol[]
         return Component("''_dashkbar", "DashKbar", "dash_kbar", available_props, wild_props; kwargs...)
 end
+
+''_dashkbar(children::Any; kwargs...) = ''_dashkbar(;kwargs..., children = children)
+''_dashkbar(children_maker::Function; kwargs...) = ''_dashkbar(children_maker(); kwargs...)
 

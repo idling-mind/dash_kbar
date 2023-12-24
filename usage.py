@@ -5,7 +5,6 @@ app = Dash(__name__)
 
 app.layout = html.Div(
     [
-        html.Button("Add action", id="button"),
         dash_kbar.DashKbar(
             id="input",
             actions=[
@@ -15,10 +14,11 @@ app.layout = html.Div(
                     "icon": "⭐️",
                     "noAction": True,
                 },
-                {"name": "Dark", "id": "theme_dark", "parent": "theme_parent"},
-                {"name": "Light", "id": "theme_light", "parent": "theme_parent"},
-                {"name": "Action 2", "id": "action2", "section": "Section 1"},
-                {"name": "Action 3", "id": "action3", "section": "Section 1"},
+                {"name": "Dark", "id": "theme_dark", "parent": "theme_parent", "icon": "🌙", "shortcut": ["t", "d"]},
+                {"name": "Light", "id": "theme_light", "parent": "theme_parent", "icon": "☀️", "shortcut": ["t", "l"]},
+                {"name": "Action 1", "id": "action1", "section": "Section 1", "shortcut": ["a", "1"]},
+                {"name": "Action 2", "id": "action2", "section": "Section 1", "shortcut": ["a", "2"]},
+                {"name": "Action 3", "id": "action3", "section": "Section 1", "shortcut": ["a", "3"]},
                 {
                     "name": "Action 4",
                     "id": "action4",
@@ -26,14 +26,18 @@ app.layout = html.Div(
                     "section": "Section 2",
                 },
             ],
+            debug=True,
             style={
                 "itemSubtitleTextColor": "steelblue",
                 # This will be replaced if style is updated by callback
                 # So use State("input", "style") as an input to the callback
                 # and update the dict
             },
+            children=[
+                html.Button("Add action", id="button"),
+                html.Div(id="output"),
+            ]
         ),
-        html.Div(id="output"),
     ]
 )
 

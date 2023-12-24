@@ -13,7 +13,7 @@ import {
 import PropTypes from 'prop-types';
 
 const DashKbar = (props) => {
-    const {id, setProps, actions, style} = props;
+    const {id, setProps, actions, children, debug, style} = props;
     const [mergedStyle, setMergedStyle] = useState({});
 
     const defaultStyle = {
@@ -37,45 +37,42 @@ const DashKbar = (props) => {
 
     return (
         <KBarProvider id={id} options={{disableScrollbarManagement: true}}>
-            <div>
-                <KBarPortal>
-                    <KBarPositioner>
-                        <KBarAnimator
+            <KBarPortal>
+                <KBarPositioner>
+                    <KBarAnimator
+                        style={{
+                            maxWidth: mergedStyle.maxWidth,
+                            width: mergedStyle.width,
+                            borderRadius: '8px',
+                            overflow: 'hidden',
+                            boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)',
+                            background: mergedStyle.background,
+                            color: 'grey',
+                            fontFamily: mergedStyle.fontFamily,
+                        }}
+                    >
+                        <KBarSearch
                             style={{
-                                maxWidth: mergedStyle.maxWidth,
-                                width: mergedStyle.width,
-                                borderRadius: '8px',
-                                overflow: 'hidden',
-                                boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)',
-                                background: mergedStyle.background,
-                                color: 'grey',
-                                fontFamily: mergedStyle.fontFamily,
+                                padding: '12px 16px',
+                                fontSize: '16px',
+                                width: '100%',
+                                boxSizing: 'border-box',
+                                outline: 'none',
+                                border: 'none',
+                                background: mergedStyle.searchBackground,
+                                color: mergedStyle.searchTextColor,
                             }}
-                        >
-                            <KBarSearch
-                                style={{
-                                    padding: '12px 16px',
-                                    fontSize: '16px',
-                                    width: '100%',
-                                    boxSizing: 'border-box',
-                                    outline: 'none',
-                                    border: 'none',
-                                    background: mergedStyle.searchBackground,
-                                    color: mergedStyle.searchTextColor,
-                                }}
-                            />
-                            <RenderResults
-                                {...props}
-                                mergedStyle={mergedStyle}
-                            />
-                            <ActionRegistration
-                                actions={actions}
-                                setProps={setProps}
-                            />
-                        </KBarAnimator>
-                    </KBarPositioner>
-                </KBarPortal>
-            </div>
+                        />
+                        <RenderResults {...props} mergedStyle={mergedStyle} />
+                        <ActionRegistration
+                            actions={actions}
+                            setProps={setProps}
+                            debug={debug}
+                        />
+                    </KBarAnimator>
+                </KBarPositioner>
+            </KBarPortal>
+            <div>{children}</div>
         </KBarProvider>
     );
 };
@@ -262,6 +259,11 @@ DashKbar.propTypes = {
     setProps: PropTypes.func,
 
     /**
+     * Children to be rendered
+     */
+    children: PropTypes.node,
+
+    /**
      * Whether to print debug messages
      * */
     debug: PropTypes.bool,
@@ -282,7 +284,10 @@ DashKbar.propTypes = {
         PropTypes.shape({
             id: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
-            shortcut: PropTypes.string,
+            shortcut: PropTypes.oneOfType([
+                PropTypes.string,
+                PropTypes.arrayOf(PropTypes.string),
+            ]),
             keywords: PropTypes.string,
             section: PropTypes.string,
             icon: PropTypes.string,
