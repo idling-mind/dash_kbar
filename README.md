@@ -37,6 +37,7 @@ The following properties are accepted by `DashKbar`.
 | `id` | The ID used to identify this component in Dash callbacks | `str` | `None` |
 | `actions` | List of actions to display in the kbar | `list[dict[str, str]]` | `[]` |
 | `style` | Style of the kbar | `dict[str, str]` | `{}` |
+| `selected` | ID of the selected item. You can use this prop in callbacks. | `str` | `None` |
 | `debug` | Show the id of the selected item in the browser console | `bool` | `False` |
 
 ### Actions
