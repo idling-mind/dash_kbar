@@ -72,7 +72,7 @@ const DashKbar = (props) => {
                     </KBarAnimator>
                 </KBarPositioner>
             </KBarPortal>
-            <div>{children}</div>
+            {children}
         </KBarProvider>
     );
 };

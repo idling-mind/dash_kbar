@@ -39,6 +39,21 @@ The following properties are accepted by `DashKbar`.
 | `style` | Style of the kbar | `dict[str, str]` | `{}` |
 | `debug` | Show the id of the selected item in the browser console | `bool` | `False` |
 
+### Actions
+
+Actions should be a list of dictionaries with the following keys.
+
+| Key | Description | Type | Required |
+| --- | --- | --- | --- |
+| `name` | Name of the action | `str` | Yes |
+| `id` | ID of the action | `str` | Yes |
+| `subtitle` | Subtitle of the action | `str` | No |
+| `section` | Section of the action | `str` | No |
+| `icon` | Icon of the action | `str` | No |
+| `parent` | If this is a child item, give the id of the parent | `str` | No |
+| `noAction` | Dont change the `selected` prop when you select this. Usually used for parent actions. | `bool` | No |
+
+
 ## Styling
 
 Style should be a dictionary with one or more of the following keys.
