@@ -37,6 +37,11 @@ const DashKbar = (props) => {
 
     return (
         <KBarProvider id={id} options={{disableScrollbarManagement: true}}>
+            <ActionRegistration
+                actions={actions}
+                setProps={setProps}
+                debug={debug}
+            />
             <KBarPortal>
                 <KBarPositioner>
                     <KBarAnimator
@@ -64,11 +69,6 @@ const DashKbar = (props) => {
                             }}
                         />
                         <RenderResults {...props} mergedStyle={mergedStyle} />
-                        <ActionRegistration
-                            actions={actions}
-                            setProps={setProps}
-                            debug={debug}
-                        />
                     </KBarAnimator>
                 </KBarPositioner>
             </KBarPortal>
