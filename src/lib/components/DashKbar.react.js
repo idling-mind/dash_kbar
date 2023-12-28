@@ -88,7 +88,7 @@ function ActionRegistration(props) {
         };
         return createAction(action);
     });
-    useRegisterActions(action_objects);
+    useRegisterActions(action_objects, [props.actions]);
     return null;
 }
 
