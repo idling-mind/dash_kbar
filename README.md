@@ -52,7 +52,7 @@ Actions should be a list of dictionaries with the following keys.
 | `section` | Section of the action | `str` | No |
 | `icon` | Icon of the action | `str` | No |
 | `parent` | If this is a child item, give the id of the parent | `str` | No |
-| `noAction` | Dont change the `selected` prop when you select this. Usually used for parent actions. | `bool` | No |
+| `actionable` | Boolean denoting whether selecting this action will change the `selected` property. Set this to `False` for parent actions where selecting the parent should show the child actions. | `bool` | No |
 | `shortcut` | Shortcut of the action | `list[str]` | No |
 
 

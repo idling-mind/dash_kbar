@@ -12,7 +12,7 @@ app.layout = html.Div(
                     "name": "DashKbar Theme",
                     "id": "theme_parent",
                     "icon": "⭐️",
-                    "noAction": True,
+                    "actionable": False,
                 },
                 {"name": "Dark", "id": "theme_dark", "parent": "theme_parent", "icon": "🌙", "shortcut": ["t", "d"]},
                 {"name": "Light", "id": "theme_light", "parent": "theme_parent", "icon": "☀️", "shortcut": ["t", "l"]},

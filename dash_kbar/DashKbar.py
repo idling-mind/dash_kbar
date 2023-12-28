@@ -20,6 +20,8 @@ Keyword arguments:
 
     `actions` is a list of dicts with keys:
 
+    - actionable (boolean; optional)
+
     - icon (string; optional)
 
     - id (string; required)
@@ -27,8 +29,6 @@ Keyword arguments:
     - keywords (string; optional)
 
     - name (string; required)
-
-    - noAction (boolean; optional)
 
     - parentId (string; optional)
 

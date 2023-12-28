@@ -79,7 +79,8 @@ const DashKbar = (props) => {
 
 function ActionRegistration(props) {
     const action_objects = props.actions.map((action) => {
-        if (action.noAction) return createAction(action);
+        if (action.hasOwnProperty('actionable') && !action.actionable)
+            return createAction(action);
         action.perform = () => {
             if (props.debug) {
                 console.log('Performing action', action);
@@ -293,7 +294,7 @@ DashKbar.propTypes = {
             icon: PropTypes.string,
             subtitle: PropTypes.string,
             parentId: PropTypes.string,
-            noAction: PropTypes.bool,
+            actionable: PropTypes.bool,
         })
     ),
 

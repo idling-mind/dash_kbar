@@ -13,7 +13,7 @@ A DashKbar component.
 Keyword arguments:
 - `children` (a list of or a singular dash component, string or number; optional): Children to be rendered
 - `id` (String; optional): The ID used to identify this component in Dash callbacks.
-- `actions` (optional): Actions to be registered with KBar. actions has the following type: Array of lists containing elements 'id', 'name', 'shortcut', 'keywords', 'section', 'icon', 'subtitle', 'parentId', 'noAction'.
+- `actions` (optional): Actions to be registered with KBar. actions has the following type: Array of lists containing elements 'id', 'name', 'shortcut', 'keywords', 'section', 'icon', 'subtitle', 'parentId', 'actionable'.
 Those elements have the following types:
   - `id` (String; required)
   - `name` (String; required)
@@ -23,7 +23,7 @@ Those elements have the following types:
   - `icon` (String; optional)
   - `subtitle` (String; optional)
   - `parentId` (String; optional)
-  - `noAction` (Bool; optional)s
+  - `actionable` (Bool; optional)s
 - `debug` (Bool; optional): Whether to print debug messages
 - `selected` (String; optional): The currently selected action
 - `style` (optional): style object. style has the following type: lists containing elements 'maxWidth', 'background', 'fontFamily'.
