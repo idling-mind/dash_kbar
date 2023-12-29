@@ -19,7 +19,7 @@ selected=NULL, style=NULL)
 
 \item{id}{Character. The ID used to identify this component in Dash callbacks.}
 
-\item{actions}{List of lists containing elements 'id', 'name', 'shortcut', 'keywords', 'section', 'icon', 'subtitle', 'parentid', 'actionable'.
+\item{actions}{List of lists containing elements 'id', 'name', 'shortcut', 'keywords', 'section', 'icon', 'subtitle', 'parentid', 'actionable', 'priority'.
 those elements have the following types:
   - id (character; required)
   - name (character; required)
@@ -29,7 +29,8 @@ those elements have the following types:
   - icon (character; optional)
   - subtitle (character; optional)
   - parentid (character; optional)
-  - actionable (logical; optional)s. Actions to be registered with KBar}
+  - actionable (logical; optional)
+  - priority (a value equal to: 1, 0, -1; optional)s. Actions to be registered with KBar}
 
 \item{debug}{Logical. Whether to print debug messages}
 

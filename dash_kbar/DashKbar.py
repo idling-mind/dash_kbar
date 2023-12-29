@@ -32,6 +32,8 @@ Keyword arguments:
 
     - parentId (string; optional)
 
+    - priority (a value equal to: 1, 0, -1; optional)
+
     - section (string; optional)
 
     - shortcut (string | list of strings; optional)

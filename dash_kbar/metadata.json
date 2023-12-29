@@ -112,6 +112,24 @@
               "actionable": {
                 "name": "bool",
                 "required": false
+              },
+              "priority": {
+                "name": "enum",
+                "value": [
+                  {
+                    "value": "1",
+                    "computed": false
+                  },
+                  {
+                    "value": "0",
+                    "computed": false
+                  },
+                  {
+                    "value": "-1",
+                    "computed": true
+                  }
+                ],
+                "required": false
               }
             }
           }

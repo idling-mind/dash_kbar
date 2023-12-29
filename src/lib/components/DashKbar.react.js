@@ -305,6 +305,7 @@ DashKbar.propTypes = {
             subtitle: PropTypes.string,
             parentId: PropTypes.string,
             actionable: PropTypes.bool,
+            priority: PropTypes.oneOf([1, 0, -1]),
         })
     ),
 
