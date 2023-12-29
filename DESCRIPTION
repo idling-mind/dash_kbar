@@ -1,6 +1,6 @@
 Package: dashKbar
 Title: cmd + k interface for dash applications
-Version: 0.3.0
+Version: 0.4.0
 Description: cmd + k interface for dash applications
 Depends: R (>= 3.0.2)
 Imports: 

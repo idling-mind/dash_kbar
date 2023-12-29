@@ -81,3 +81,4 @@ Style should be a dictionary with one or more of the following keys.
 | `resultFontSize` | Font size of the items | `14px` |
 | `subtitleFontSize` | Font size of the item subtitles | `12px` |
 | `sectionTitleFontSize` | Font size of the section titles | `10px` |
+| `shortcutBackground` | Background color of the shortcut | `rgba(0 0 0 / .1)` |

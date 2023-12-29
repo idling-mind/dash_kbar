@@ -36,6 +36,7 @@ const DashKbar = (props) => {
         resultFontSize: '14px',
         subtitleFontSize: '12px',
         sectionTitleFontSize: '10px',
+        shortcutBackground: 'rgba(0 0 0 / .1)',
     };
 
     useEffect(() => {
@@ -236,9 +237,10 @@ const ResultItem = React.forwardRef(
                                 key={sc}
                                 style={{
                                     padding: '4px 6px',
-                                    background: 'rgba(0 0 0 / .1)',
+                                    background:
+                                        props.mergedStyle.shortcutBackground,
                                     borderRadius: '4px',
-                                    fontSize: 14,
+                                    fontSize: props.mergedStyle.itemFontSize,
                                 }}
                             >
                                 {sc}

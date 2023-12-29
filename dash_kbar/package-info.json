@@ -1,6 +1,6 @@
 {
   "name": "dash_kbar",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "cmd + k interface for dash applications",
   "main": "build/index.js",
   "scripts": {
