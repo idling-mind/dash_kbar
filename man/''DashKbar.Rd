@@ -24,7 +24,7 @@ those elements have the following types:
   - id (character; required)
   - name (character; required)
   - shortcut (character | list of characters; optional)
-  - keywords (character; optional)
+  - keywords (list of characters; optional)
   - section (character; optional)
   - icon (character; optional)
   - subtitle (character; optional)

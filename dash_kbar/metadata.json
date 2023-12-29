@@ -87,7 +87,10 @@
                 "required": false
               },
               "keywords": {
-                "name": "string",
+                "name": "arrayOf",
+                "value": {
+                  "name": "string"
+                },
                 "required": false
               },
               "section": {

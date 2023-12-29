@@ -49,6 +49,7 @@ Actions should be a list of dictionaries with the following keys.
 | `name` | Name of the action | `str` | Yes |
 | `id` | ID of the action | `str` | Yes |
 | `subtitle` | Subtitle of the action | `str` | No |
+| `keywords` | Keywords of the action | `list[str]` | No |
 | `section` | Section of the action | `str` | No |
 | `icon` | Icon of the action | `str` | No |
 | `parent` | If this is a child item, give the id of the parent | `str` | No |
@@ -74,4 +75,9 @@ Style should be a dictionary with one or more of the following keys.
 | `selectedBackground` | Background color of the selected item | `rgba(34, 139, 230, 0.1)` |
 | `selectedTextColor` | Text color of the selected item | `grey` |
 | `selectedLeftBorderColor` | Left border color of the selected item | `rgba(34, 139, 230, 1)` |
-
+| `boxShadow` | Box shadow of the kbar | `0 0 20px rgba(0, 0, 0, 0.1)` |
+| `borderRadius` | Border radius of the kbar | `8px` |
+| `searchBoxFontSize` | Font size of the search input box | `16px` |
+| `resultFontSize` | Font size of the items | `14px` |
+| `subtitleFontSize` | Font size of the item subtitles | `12px` |
+| `sectionTitleFontSize` | Font size of the section titles | `10px` |

@@ -26,7 +26,7 @@ Keyword arguments:
 
     - id (string; required)
 
-    - keywords (string; optional)
+    - keywords (list of strings; optional)
 
     - name (string; required)
 

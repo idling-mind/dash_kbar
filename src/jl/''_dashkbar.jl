@@ -18,7 +18,7 @@ Those elements have the following types:
   - `id` (String; required)
   - `name` (String; required)
   - `shortcut` (String | Array of Strings; optional)
-  - `keywords` (String; optional)
+  - `keywords` (Array of Strings; optional)
   - `section` (String; optional)
   - `icon` (String; optional)
   - `subtitle` (String; optional)

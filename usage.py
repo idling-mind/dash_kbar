@@ -18,7 +18,7 @@ app.layout = html.Div(
                 {"name": "Light", "id": "theme_light", "parent": "theme_parent", "icon": "☀️", "shortcut": ["t", "l"]},
                 {"name": "Action 1", "id": "action1", "section": "Section 1", "shortcut": ["a", "1"]},
                 {"name": "Action 2", "id": "action2", "section": "Section 1", "shortcut": ["a", "2"]},
-                {"name": "Action 3", "id": "action3", "section": "Section 1", "shortcut": ["a", "3"]},
+                {"name": "Action 3", "id": "action3", "section": "Section 1", "shortcut": ["a", "3"], "keywords": ["action", "three"]},
                 {
                     "name": "Action 4",
                     "id": "action4",
@@ -30,6 +30,7 @@ app.layout = html.Div(
             debug=True,
             style={
                 "itemSubtitleTextColor": "steelblue",
+                "sectionTitleTextColor": "darkred",
                 # This will be replaced if style is updated by callback
                 # So use State("input", "style") as an input to the callback
                 # and update the dict
@@ -55,15 +56,17 @@ def update_actions(n_clicks, actions):
 
 
 @callback(
-    Output("output", "children"), Output("input", "style"), Input("input", "selected")
+    Output("output", "children"), Output("input", "style"), Input("input", "selected"), State("input", "style")
 )
-def update_output(selected):
+def update_output(selected, style):
     if selected is None:
         return "No action selected", no_update
     if selected == "theme_dark":
-        return no_update, {"background": "#121212"}
+        style["background"] = "#121212"
+        return no_update, style
     elif selected == "theme_light":
-        return no_update, {"background": "#ffffff"}
+        style["background"] = "#ffffff"
+        return no_update, style
     return f"Action {selected} selected", no_update
 
 

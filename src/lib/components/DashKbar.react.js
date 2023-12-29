@@ -11,6 +11,7 @@ import {
     useRegisterActions,
 } from 'kbar';
 import PropTypes from 'prop-types';
+import {prop} from 'ramda';
 
 const DashKbar = (props) => {
     const {id, setProps, actions, children, debug, style} = props;
@@ -29,6 +30,12 @@ const DashKbar = (props) => {
         selectedBackground: 'rgba(34, 139, 230, 0.1)',
         selectedTextColor: 'grey',
         selectedLeftBorderColor: 'rgba(34, 139, 230, 1)',
+        boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)',
+        borderRadius: '8px',
+        searchBoxFontSize: '16px',
+        resultFontSize: '14px',
+        subtitleFontSize: '12px',
+        sectionTitleFontSize: '10px',
     };
 
     useEffect(() => {
@@ -48,9 +55,9 @@ const DashKbar = (props) => {
                         style={{
                             maxWidth: mergedStyle.maxWidth,
                             width: mergedStyle.width,
-                            borderRadius: '8px',
+                            borderRadius: mergedStyle.borderRadius,
                             overflow: 'hidden',
-                            boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)',
+                            boxShadow: mergedStyle.boxShadow,
                             background: mergedStyle.background,
                             color: 'grey',
                             fontFamily: mergedStyle.fontFamily,
@@ -59,7 +66,7 @@ const DashKbar = (props) => {
                         <KBarSearch
                             style={{
                                 padding: '12px 16px',
-                                fontSize: '16px',
+                                fontSize: mergedStyle.searchBoxFontSize,
                                 width: '100%',
                                 boxSizing: 'border-box',
                                 outline: 'none',
@@ -104,7 +111,7 @@ function RenderResults(props) {
                     <div
                         style={{
                             padding: '8px 16px',
-                            fontSize: '10px',
+                            fontSize: props.mergedStyle.sectionTitleFontSize,
                             textTransform: 'uppercase',
                             color: props.mergedStyle.sectionTitleTextColor,
                         }}
@@ -173,7 +180,7 @@ const ResultItem = React.forwardRef(
                         display: 'flex',
                         gap: '8px',
                         alignItems: 'center',
-                        fontSize: 14,
+                        fontSize: props.mergedStyle.resultFontSize,
                     }}
                 >
                     {action.icon && action.icon}
@@ -204,7 +211,8 @@ const ResultItem = React.forwardRef(
                         {action.subtitle && (
                             <span
                                 style={{
-                                    fontSize: 12,
+                                    fontSize:
+                                        props.mergedStyle.subtitleFontSize,
                                     color: props.mergedStyle
                                         .itemSubtitleTextColor,
                                 }}
@@ -289,7 +297,7 @@ DashKbar.propTypes = {
                 PropTypes.string,
                 PropTypes.arrayOf(PropTypes.string),
             ]),
-            keywords: PropTypes.string,
+            keywords: PropTypes.arrayOf(PropTypes.string),
             section: PropTypes.string,
             icon: PropTypes.string,
             subtitle: PropTypes.string,

@@ -3,7 +3,7 @@ module DashKbar
 using Dash
 
 const resources_path = realpath(joinpath( @__DIR__, "..", "deps"))
-const version = "0.2.0"
+const version = "0.3.0"
 
 include("jl/''_dashkbar.jl")
 
